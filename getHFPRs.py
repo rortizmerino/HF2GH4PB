@@ -1,5 +1,6 @@
 import os
 from huggingface_hub import HfApi
+from huggingface_hub import get_discussion_details
 
 dataset_repo = "draco-ai/trial01"
 
@@ -11,26 +12,35 @@ hf_token = os.getenv("HF_TOKEN")
 #api = HfApi(token='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')
 api = HfApi(token=hf_token)
 
+try:
+    # Fetch dataset repository information
+    dataset_info = api.dataset_info(dataset_repo)
+    
+    # If successful, print some basic information about the dataset
+    print(f"Dataset Name: {dataset_info.id}")
+    print(f"Private: {dataset_info.private}")
+    print(f"Last Modified: {dataset_info.lastModified}")
+
+except RepositoryNotFoundError:
+    print(f"Error: The repository '{dataset_repo}' was not found or you do not have access.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+# Fetch all discussions for the specified repository
 from huggingface_hub import get_repo_discussions
 discussions_list = list(get_repo_discussions(repo_id=dataset_repo,
                                              repo_type="dataset",
                                              discussion_type="pull_request",
                                              use_auth_token=hf_token))
 
-for discussion in discussions_list:
-    print(discussion)
+# Filter only open pull requests
+open_pull_requests = [pr for pr in discussions_list if pr.status == "open"]
 
-#try:
-    # Fetch dataset repository information
-#    dataset_info = api.dataset_info(repo_id=dataset_repo, use_auth_token="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")
-    
-    # If successful, print some basic information about the dataset
-#    print(f"Dataset Name: {dataset_info.id}")
-#    print(f"Private: {dataset_info.private}")
-#    print(f"Last Modified: {dataset_info.lastModified}")
-#    print(f"Files: {[file.rfilename for file in dataset_info.siblings]}")
-
-#except RepositoryNotFoundError:
-#    print(f"Error: The repository '{dataset_repo}' was not found or you do not have access.")
-#except Exception as e:
-#    print(f"An error occurred: {e}")
+# Print details of the open pull requests
+for pr in open_pull_requests:
+    print(f"PR num: {pr.num}")
+    print(f"Title: {pr.title}")
+    print(f"Author: {pr.author}")
+    print(f"Created at: {pr.created_at}")
+    print(f"URL: {pr.url}")
+    print("-" * 40)
