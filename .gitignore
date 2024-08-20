@@ -1,4 +1,5 @@
 
-set_HF_TOKEN.sh
+.venv
 
+set_HF_TOKEN.sh
 
