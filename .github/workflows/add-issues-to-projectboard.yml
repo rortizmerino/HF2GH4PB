@@ -24,6 +24,7 @@ jobs:
             issue_number=${{ github.event.issue.number }}
             owner_repo=${{ github.repository }}
             project_id=4
+            column_id=Todo
   
             curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
