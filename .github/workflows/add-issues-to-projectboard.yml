@@ -28,5 +28,5 @@ jobs:
         - name: Add issue to project board
           run: |
             gh auth login --with-token <<< "${{ secrets.GH_TOKEN }}"
-            gh project item add --project-id HF2GH4PB --url "${{ github.event.issue.html_url }}"
+            gh project item-add 4 --owner rortizmerino --url "${{ github.event.issue.html_url }}"
 
