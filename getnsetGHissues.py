@@ -1,10 +1,12 @@
+import os
 import requests
 from requests.auth import HTTPBasicAuth
 
 # Your GitHub personal access token
-GITHUB_TOKEN = 'your_personal_access_token'
+GITHUB_TOKEN = os.getenv("GH_TOKEN")
+
 # The repository to interact with (format: "owner/repo")
-REPO = 'your_username/your_repo'
+REPO = 'rortizmerino/HF2GH4PB'
 
 # GitHub API base URL
 GITHUB_API_URL = 'https://api.github.com'
@@ -43,4 +45,7 @@ def check_and_create_issues():
 
 # Run the check and create process
 if __name__ == "__main__":
-    check_and_create_issues()
+#    check_and_create_issues()
+    issues = get_issues()
+
+print(issues)
