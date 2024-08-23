@@ -8,8 +8,25 @@ jobs:
   add_issue_to_project:
     runs-on: ubuntu-latest
     steps:
-      - name: Add issue to project board
-        uses: actions/add-issues-to-projectboard
-        with:
-          project-url: ${{ secrets.PROJECT_URL }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Add issue to project board
+#        uses: actions/add-issues-to-projectboard.yml
+#        with:
+#          project-url: ${{ secrets.PROJECT_URL }}
+#          github-token: ${{ secrets.GH_TOKEN }}
+
+        - name: Check out repository
+          uses: actions/checkout@v3
+
+        - name: Set up GitHub CLI
+          uses: actions/setup-node@v3
+          with:
+            node-version: '16'
+
+        - name: Install GitHub CLI
+          run: sudo apt-get install gh
+
+        - name: Add issue to project board
+          run: |
+            gh auth login --with-token <<< "${{ secrets.GH_TOKEN }}"
+            gh project item add --project-id HF2GH4PB --url "${{ github.event.issue.html_url }}"
+
