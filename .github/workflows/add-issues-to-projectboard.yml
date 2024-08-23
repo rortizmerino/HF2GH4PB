@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add issue to project board
-        uses: actions/add-to-project@v1.1.0
+        uses: actions/add-issues-to-projectboard
         with:
           project-url: ${{ secrets.PROJECT_URL }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
