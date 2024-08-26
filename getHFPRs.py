@@ -1,6 +1,7 @@
 import os
 from huggingface_hub import HfApi
 from huggingface_hub import get_discussion_details
+import requests
 
 dataset_repo = "draco-ai/trial01"
 
@@ -21,9 +22,14 @@ try:
     print(f"Private: {dataset_info.private}")
     print(f"Last Modified: {dataset_info.lastModified}")
 
-except RepositoryNotFoundError:
-    print(f"Error: The repository '{dataset_repo}' was not found or you do not have access.")
+except requests.exceptions.HTTPError as http_err:
+    # Handle HTTP errors (like 404 Not Found)
+    print(f"HTTP error occurred: {http_err}")
+except ValueError as value_err:
+    # Handle other errors such as incorrect repo format
+    print(f"Value error occurred: {value_err}")
 except Exception as e:
+    # Handle any other exceptions
     print(f"An error occurred: {e}")
 
 # Fetch all discussions for the specified repository
