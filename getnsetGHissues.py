@@ -11,26 +11,6 @@ REPO = 'rortizmerino/HF2GH4PB'
 # GitHub API base URL
 GITHUB_API_URL = 'https://api.github.com'
 
-# Function to get all issues from the repository
-def get_issues():
-    url = f'{GITHUB_API_URL}/repos/{REPO}/issues'
-    response = requests.get(url, auth=HTTPBasicAuth('username', GITHUB_TOKEN))
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f'Failed to fetch issues: {response.status_code} {response.text}')
-        return []
-
-# Function to create a new issue
-def create_issue(title, body):
-    url = f'{GITHUB_API_URL}/repos/{REPO}/issues'
-    issue = {'title': title, 'body': body}
-    response = requests.post(url, json=issue, auth=HTTPBasicAuth('username', GITHUB_TOKEN))
-    if response.status_code == 201:
-        print(f'Successfully created issue: {title}')
-    else:
-        print(f'Failed to create issue: {response.status_code} {response.text}')
-
 # Function to check issues against some conditions
 def check_and_create_issues():
     issues = get_issues()
@@ -45,7 +25,4 @@ def check_and_create_issues():
 
 # Run the check and create process
 if __name__ == "__main__":
-#    check_and_create_issues()
-    issues = get_issues()
-
-print(issues)
+    check_and_create_issues()
