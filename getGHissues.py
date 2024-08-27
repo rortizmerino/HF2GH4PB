@@ -16,7 +16,23 @@ def get_issues():
     url = f'{GITHUB_API_URL}/repos/{REPO}/issues'
     response = requests.get(url, auth=HTTPBasicAuth('username', GITHUB_TOKEN))
     if response.status_code == 200:
-        return response.json()
+        #return response.json()
+        issues = response.json()
+        
+        # Parse and extract only the title and author ID
+        parsed_issues = [
+            {
+                'title': issue['title'],
+                'author': issue['user']['id']  # 'user' contains details about the author
+            }
+            for issue in issues
+        ]
+        #return parsed_issues
+        # Print details of the open pull requests
+        for pi in parsed_issues:
+            print(f"Title: {pi['title']}")
+            print(f"Author: {pi['author']}")
+            #print(pi)
     else:
         print(f'Failed to fetch issues: {response.status_code} {response.text}')
         return []
