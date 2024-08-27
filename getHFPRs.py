@@ -54,7 +54,7 @@ def get_prs():
         #print("-" * 40)
         pr_num={pr.num}
         pr_title={pr.title}
-        strng=f"#{pr_num}; {pr_title}"
+        strng=f"#{pr.num}; {pr.title}"
         auth=pr.author
         result_dict[strng] = auth
     return result_dict
@@ -64,4 +64,4 @@ if __name__ == "__main__":
 #    check_and_create_issues()
     prs = get_prs()
 
-#print(prs)
+print(prs)

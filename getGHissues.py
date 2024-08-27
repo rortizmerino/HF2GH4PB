@@ -45,4 +45,4 @@ if __name__ == "__main__":
 #    check_and_create_issues()
     issues = get_issues()
 
-#print(issues)
+print(issues)
