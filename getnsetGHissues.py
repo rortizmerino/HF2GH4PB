@@ -24,14 +24,12 @@ def check_and_create_issues():
     # Step 2: Get existing issues from GitHub
     gh_issues = get_issues()
 
-    # Extract PR titles or identifiers from the existing issues
-    existing_pr_titles = {issue['title'] for issue in gh_issues}
-
-    # Step 3: Compare and create issues for new PRs
-    for pr in hf_prs:
-        if pr['title'] not in existing_pr_titles:
-            # If the PR is not represented, create a new GitHub issue
-            create_gh_issue(title=pr['title'], body=pr['body'])
+    for pr_key in hf_prs.keys():
+        if pr_key in gh_issues:
+            print(f"Issue already exists for PR: {pr_key}")
+        else:
+            print(f"Creating issue for PR: {pr_key}")
+            # create_issue(title=pr_key, body="Body of the issue")
 
 # Run the check and create process
 if __name__ == "__main__":

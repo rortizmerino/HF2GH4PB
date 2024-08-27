@@ -29,13 +29,14 @@ def get_issues():
         ]
         #return parsed_issues
         # Print details of the open issues
-        result_dict = {}
+        issue_dict = {}
         for pi in parsed_issues:
-            print(f"Title: {pi['title']}")
-            print(f"Author: {pi['author']}")
-            result_dict[pi['title']] = pi['author']
-            #print(pi)
-        return result_dict
+            #print(f"Title: {pi['title']}")
+            #print(f"Author: {pi['author']}")
+            strng = pi['title']
+            auth = pi['author']
+            issue_dict[strng] = auth
+        return issue_dict
     else:
         print(f'Failed to fetch issues: {response.status_code} {response.text}')
         return []
@@ -45,4 +46,4 @@ if __name__ == "__main__":
 #    check_and_create_issues()
     issues = get_issues()
 
-print(issues)
+#print(issues)
