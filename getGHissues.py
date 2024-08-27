@@ -23,7 +23,7 @@ def get_issues():
         parsed_issues = [
             {
                 'title': issue['title'],
-                'author': issue['user']['id']  # 'user' contains details about the author
+                'author': issue['user']['login']  # 'user' contains details about the author
             }
             for issue in issues
         ]

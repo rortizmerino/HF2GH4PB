@@ -22,6 +22,7 @@ def get_prs():
         print(f"Dataset Name: {dataset_info.id}")
         print(f"Private: {dataset_info.private}")
         print(f"Last Modified: {dataset_info.lastModified}")
+        print("-" * 40)
 
     except requests.exceptions.HTTPError as http_err:
         # Handle HTTP errors (like 404 Not Found)
@@ -45,12 +46,12 @@ def get_prs():
 
     # Print details of the open pull requests
     for pr in open_pull_requests:
-        print(f"PR num: {pr.num}")
-        print(f"Title: {pr.title}")
+        #print(f"PR num: {pr.num}")
+        print(f"Title: #{pr.num}; {pr.title}")
         print(f"Author: {pr.author}")
-        print(f"Created at: {pr.created_at}")
-        print(f"URL: {pr.url}")
-        print("-" * 40)
+        #print(f"Created at: {pr.created_at}")
+        #print(f"URL: {pr.url}")
+        #print("-" * 40)
 
 # Run 
 if __name__ == "__main__":
