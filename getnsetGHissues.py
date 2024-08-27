@@ -29,7 +29,8 @@ def check_and_create_issues():
             print(f"Issue already exists for PR: {pr_key}")
         else:
             print(f"Creating issue for PR: {pr_key}")
-            # create_issue(title=pr_key, body="Body of the issue")
+            print(f"By: {hf_prs[pr_key]}")
+            create_issue(title=pr_key, body=f"By: {hf_prs[pr_key]}")
 
 # Run the check and create process
 if __name__ == "__main__":
