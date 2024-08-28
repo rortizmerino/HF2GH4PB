@@ -4,7 +4,8 @@ from huggingface_hub import get_discussion_details
 import requests
 
 def get_prs():
-    dataset_repo = "draco-ai/trial01"
+    # The repository to interact with (format: "owner/repo")
+    dataset_repo = os.getenv("HF_REPO")
 
     # get access token
     # Org permissions -> Repositories -> Read access to contents of all repos in selected organizations

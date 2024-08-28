@@ -51,7 +51,7 @@ Initialize environment
 source .venv/bin/activate
 ```
 
-2. Set up access tokens
+2. Set up access tokens and links
 
 HuggingFace access token
 
@@ -71,6 +71,15 @@ cp set_GH_TOKEN_example.sh set_GH_TOKEN.sh
 source set_GH_TOKEN.sh
 ```
 
+HuggingFace and GitHub repository links
+
+```bash
+cp set_LINKS_example.sh set_LINKS.sh
+# modify set_LINKS.sh to include your token
+# file is (and/or should be) included in .gitignore for security reasons
+source set_LINKS.sh
+```
+
 3. Run
 
 ```bash
@@ -83,6 +92,7 @@ python3 getnsetGHissues.py
 source .venv/bin/activate
 source set_HF_TOKEN.sh
 source set_GH_TOKEN.sh
+source set_LINKS.sh
 python3 getnsetGHissues.py
 ```
 

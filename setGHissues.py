@@ -6,7 +6,7 @@ from requests.auth import HTTPBasicAuth
 GITHUB_TOKEN = os.getenv("GH_TOKEN")
 
 # The repository to interact with (format: "owner/repo")
-REPO = 'rortizmerino/HF2GH4PB'
+REPO = os.getenv("GH_REPO")
 
 # GitHub API base URL
 GITHUB_API_URL = 'https://api.github.com'
