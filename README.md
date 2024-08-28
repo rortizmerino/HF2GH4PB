@@ -51,6 +51,41 @@ Initialize environment
 source .venv/bin/activate
 ```
 
+2. Set up access tokens
+
+HuggingFace access token
+
+```bash
+cp set_HF_TOKEN_example.sh set_HF_TOKEN.sh
+# modify set_HF_TOKEN.sh to include your token
+# file is (and/or should be) included in .gitignore for security reasons
+source set_HF_TOKEN.sh
+```
+
+GitHub access token
+
+```bash
+cp set_GH_TOKEN_example.sh set_GH_TOKEN.sh
+# modify set_GH_TOKEN.sh to include your token
+# file is (and/or should be) included in .gitignore for security reasons
+source set_GH_TOKEN.sh
+```
+
+3. Run
+
+```bash
+python3 getnsetGHissues.py
+```
+
+4. Quick run (only after completing steps 1-3 at least once)
+
+```bash
+source .venv/bin/activate
+source set_HF_TOKEN.sh
+source set_GH_TOKEN.sh
+python3 getnsetGHissues.py
+```
+
 ## License
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
