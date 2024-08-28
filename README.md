@@ -80,13 +80,19 @@ cp set_LINKS_example.sh set_LINKS.sh
 source set_LINKS.sh
 ```
 
-3. Run
+3. Setup a project board and automate it
+
+Follow [this link](https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project) to create a project board using GitHib Docs. This repo is configured to use [this projectboard](https://github.com/users/rortizmerino/projects/4/views/1).
+
+Enable a built-in automation as described [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-built-in-automations) to use "Auto add to project" "When the filter matches a new or updated item" "is:issue,pr is:open" "+ Add the item to the project"
+
+4. Run
 
 ```bash
 python3 getnsetGHissues.py
 ```
 
-4. Quick run (only after completing steps 1-3 at least once)
+5. Quick run (only after completing steps 1-3 at least once)
 
 ```bash
 source .venv/bin/activate
