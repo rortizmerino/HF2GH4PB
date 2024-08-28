@@ -23,5 +23,5 @@ def create_issue(title, body):
 
 # Run the check and create process
 if __name__ == "__main__":
-#    check_and_create_issues()
-    create_issue("CLI open issue test, automation to project board test", "check check")
+    #create_issue("CLI open issue test, automation to project board test", "check check")
+    create_issue()
