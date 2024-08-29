@@ -1,8 +1,9 @@
 
 .venv
 
-set_HF_TOKEN.sh
+set_HF_TOKEN_JG.sh
 
-set_GH_TOKEN.sh
+set_GH_TOKEN_JG.sh
 
-set_LINKS.sh
+set_LINKS_JG.sh
+__pycache__/*
